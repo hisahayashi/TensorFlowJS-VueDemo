@@ -1,0 +1,58 @@
+@charset "utf-8";
+
+
+/* --------------------------------------------- */
+/* button */
+/* --------------------------------------------- */
+@mixin arrow-base(){
+  position: relative;
+  @include alpha-hover();
+  &:before{
+    content: "";
+    position: absolute;
+    left: auto;
+    right: auto;
+    top: 50%;
+    display: block;
+    width: 17px;
+    height: 6px;
+    margin: -3px 0 0 0;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+}
+
+@mixin arrow-foward($color: 'black'){
+  @include arrow-base();
+  padding: 0 23px 0 0;
+  &:before{
+    right: 0;
+    @if $color == 'black' {
+      background-image: url(/static/img/common/all_arw01r.png);
+    }
+    @else {
+      background-image: url(/static/img/common/all_arw01r_wt.png);
+    }
+  }
+}
+
+@mixin arrow-back($color: 'black'){
+  @include arrow-base();
+  padding: 0 0 0 23px;
+  &:before{
+    left: 0;
+    @if $color == 'black' {
+      background-image: url(/static/img/common/all_arw01l.png);
+    }
+    @else {
+      background-image: url(/static/img/common/all_arw01l_wt.png);
+    }
+  }
+}
+
+@mixin alpha-hover{
+  transition: opacity 300ms cubic-bezier($easeIn-out-cubic) 0ms;
+  &:hover{
+    opacity: 0.5;
+  }
+}

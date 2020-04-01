@@ -1,0 +1,42 @@
+@charset "utf-8";
+
+// base: animations, base, typography, and utilies.
+// components: have a single scss file for each individual component
+// layout: Header, footer, grid, navigation
+// pages: Have a single scss for each specific page
+// abstracts: handles function, mixins, and variables
+// vendor: handles 3rd party css
+// styles.scss
+
+// @import url(http://fonts.googleapis.com/earlyaccess/notosansjapanese.css);
+
+// chartsheets
+// fontawesome: http://fontawesome.io/cheatsheet/
+// blacktie: http://www.c1espresso.co.nz/assets/black-tie/documentation/all.html
+// simple-line-icon: http://simplelineicons.com/
+// ionicons: http://ionicons.com/cheatsheet.html
+
+// @import "../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss";
+// @import "../../node_modules/@fortawesome/fontawesome-free/scss/brands.scss";
+// @import "../../node_modules/ionicons/dist/scss/ionicons.scss";
+
+@import '~bootstrap';
+@import '~bootstrap-vue';
+
+
+
+@import "~@fortawesome/fontawesome-free/css/all.css";
+@import "~ionicons/dist/css/ionicons.css";
+
+@import "./abstracts/_mixin-common.scss";
+@import "./abstracts/_mixin-background.scss";
+@import "./abstracts/_mixin-button.scss";
+@import "./base/_reset.scss";
+@import "./base/_form_reset.scss";
+@import "./base/_common.scss";
+
+@import "./pages/_global.scss";
+@import "./pages/_index.scss";
+
+@import "./pages/_rp_global.scss";
+@import "./pages/_rp_index.scss";

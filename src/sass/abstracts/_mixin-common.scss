@@ -1,0 +1,236 @@
+@charset "utf-8";
+
+
+/* --------------------------------------------- */
+/* value */
+/* --------------------------------------------- */
+$width_s: 667px;
+$width_m: 960px;
+$width_ml: 1024px;
+$width_l: 1200px;
+
+/* --------------------------------------------- */
+/* ease */
+/* --------------------------------------------- */
+$easeIn-out-cubic: 0.645, 0.045, 0.355, 1.000;
+$easeIn-out-circ: 0.785, 0.135, 0.150, 0.860;
+$easeIn-out-expo: 1.000, 0.000, 0.000, 1.000;
+$easeIn-out-back: 0.680, -0.550, 0.265, 1.550;
+
+/* --------------------------------------------- */
+/* color */
+/* --------------------------------------------- */
+$black: #000;
+$dk_black: #111;
+$lt_black: #222;
+
+$vdk_gray: #333;
+$dk_gray: #666;
+$gray: #999;
+$lt_gray: #aaa;
+$vlt_gray: #ccc;
+
+$dk_white: #ddd;
+$lt_white: #eee;
+$vlt_white: #f6f6f6;
+$white: #fff;
+
+$bg_gray: #9E9E9F;
+
+/* --------------------------------------------- */
+/* font */
+/* --------------------------------------------- */
+$font_sans_jp: 'Yu Gothic', '游ゴシック', 'YuGothic', '游ゴシック体', 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', 'Meiryo UI', Meiryo, 'メイリオ', 'ＭＳ Ｐゴシック', sans-serif;
+// $font_sans_jp: 'Noto Sans Japanese', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', sans-serif;
+$font_sans_en: 'Helvetica Neue', Arial, sans-serif;
+$font_serif_jp: heisei-mincho-std, 'ヒラギノ明朝 ProN W3', 'HiraMinProN-W3', 'HG明朝E', 'ＭＳ Ｐ明朝', 'MS PMincho', 'MS 明朝', serif;
+$font_serif_en: 'EB Garamond', 'Times New Roman', serif;
+$font_dinc_reg: 'DINNextW01-CondensedReg', sans-serif;
+$font_dinc_med: 'DINNextW01-CondensedMed', sans-serif;
+$font_dinc_bol: 'DINNextW01-CondensedBol', sans-serif;
+$font_garamond: garamond-fb-display, 'EB Garamond', 'Times New Roman', serif;
+
+
+@mixin font-jp-base{
+  font-family: $font_sans_jp;
+  font-weight: bold;
+  font-style: normal;
+  letter-spacing: 0.05em;
+}
+
+@mixin font-en-base{
+  font-family: $font_sans_en;
+  font-weight: normal;
+  font-style: normal;
+  letter-spacing: 0.05em;
+}
+
+@mixin font-mincho{
+  font-family: $font_serif_jp;
+  font-weight: normal;
+  font-style: normal;
+}
+
+@mixin font-garamond{
+  font-family: $font_garamond;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* --------------------------------------------- */
+/* font icon */
+/* --------------------------------------------- */
+@mixin sample-font-awesome(){
+  @include fa-icon();
+  content: $fa-var-home;
+}
+
+@mixin sample-black-tie(){
+  @include bt-icon();
+  content: $bt-var-home;
+  font-weight: 900; // solid
+  font-weight: 700; // bold
+  font-weight: 200; // light
+}
+
+@mixin sample-ionicons(){
+  @include ion-font();
+  content: $ionicon-var-home;
+}
+
+@mixin sample-simple-line-font(){
+  @include simple-line-font();
+  content: $slf-var-home;
+}
+
+/* --------------------------------------------- */
+/* function */
+/* --------------------------------------------- */
+@function addSuffix( $file, $suffix: '@2x' ){
+  $len: str-length( $file );
+  $pos: str-index($file, '.');
+  $first: str-slice($file, 0, $pos - 1);
+  $lastLen: $len - str-length( $first );
+  $last: str-slice( $file, $pos, $len );
+  $filename: $first + $suffix + $last;
+  @return $filename;
+}
+
+/* --------------------------------------------- */
+/* mixin */
+/* --------------------------------------------- */
+@mixin cf {
+  content: "";
+  display: block;
+  clear: both;
+  &:after{
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
+
+@mixin hide-text {
+  text-indent:100%;
+  white-space:nowrap;
+  overflow:hidden;
+}
+
+@mixin hover-alpha(){
+  transition: opacity 250ms cubic-bezier($easeIn-out-circ);
+  &:hover{
+    opacity: 0.6;
+  }
+  &:active{
+    opacity: 0.4;
+  }
+}
+
+@mixin hover-blink(){
+  transition: opacity 250ms cubic-bezier($easeIn-out-circ);
+
+  &:hover{
+    animation: blink 300ms ease 0ms 1 forwards;
+  }
+  &:active{
+    opacity: 0.7;
+  }
+}
+
+@mixin hover-line(){
+  position: relative;
+  transition: opacity 250ms cubic-bezier($easeIn-out-circ);
+
+  &:after{
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background: $white;
+    transform: scaleX(0);
+    transform-origin: 50% 0;
+    transition: transform 250ms cubic-bezier($easeIn-out-circ);
+  }
+
+  &:hover{
+    &:after{
+      transform: scaleX(1);
+    }
+  }
+  &:active{
+    opacity: 0.7;
+  }
+}
+
+@mixin hover-float(){
+  transition: transform 500ms cubic-bezier($easeIn-out-circ), opacity 250ms cubic-bezier($easeIn-out-circ);
+  &:hover{
+    transform: translate(-2px, -2px);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  }
+  &:active{
+    opacity: 0.4;
+  }
+}
+
+@mixin hover-indent(){
+  transition: text-indent 500ms cubic-bezier($easeIn-out-circ), opacity 250ms cubic-bezier($easeIn-out-circ);
+  &:hover{
+    text-indent: 10px;
+  }
+  &:active{
+    opacity: 0.4;
+  }
+}
+
+
+/* --------------------------------------------- */
+/* keyframes */
+/* --------------------------------------------- */
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  10% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+/* --------------------------------------------- */
+/* layout */
+/* --------------------------------------------- */
+@mixin absolute-center{
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}

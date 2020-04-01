@@ -1,0 +1,100 @@
+@charset "utf-8";
+
+
+/*------------------------------------------------
+   layout
+------------------------------------------------*/
+
+@media screen and (max-width: 1200px) {
+
+
+  // end
+}
+
+
+/*------------------------------------------------
+   layout
+------------------------------------------------*/
+
+@media screen and (max-width: 900px) {
+
+  // end
+}
+
+
+/*------------------------------------------------
+   layout
+------------------------------------------------*/
+
+@media screen and (max-width: 667px) {
+
+/* head */
+#head {
+}
+
+.menu_trigger {
+  transform: scale(0.85);
+  transform-origin: 100% 0;
+  .cont {
+    span {
+      &:nth-of-type(1) {}
+      &:nth-of-type(2) {}
+    }
+  }
+
+  &:hover {
+    .cont {
+      span {
+        &:nth-of-type(1) {}
+        &:nth-of-type(2) {}
+      }
+    }
+  }
+
+  &.active {
+    .cont {
+      span {
+        &:nth-of-type(1) {}
+        &:nth-of-type(2) {}
+      }
+    }
+  }
+}
+
+#head.full .menu_trigger {
+  .cont {
+    span {}
+  }
+
+  &.active {
+    .cont {
+      span {}
+    }
+  }
+}
+
+/* foot */
+#foot {
+}
+
+
+/* layout */
+
+/* common */
+.common_container {
+  @include page-container-sp();
+
+  .title_section{
+    @include title-section-sp();
+  }
+
+  .common_section{
+    @include contents-section-sp();
+    .title {}
+    .text {}
+    .btn {}
+  }
+}
+
+// end
+}
