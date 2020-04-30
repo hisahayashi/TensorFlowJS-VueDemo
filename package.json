@@ -50,7 +50,7 @@
     "dat.gui": "^0.7.6",
     "imagesloaded": "^4.1.4",
     "ionicons": "^4.4.6",
-    "jquery": "^3.3.1",
+    "jquery": "^3.5.0",
     "jquery.easing": "^1.4.1",
     "stats.js": "^0.17.0",
     "vue-router": "^3.0.1",
