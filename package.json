@@ -45,7 +45,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.7.2",
     "@tensorflow-models/body-pix": "^2.0.4",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "bootstrap": "^4.4.1",
     "dat.gui": "^0.7.6",
     "imagesloaded": "^4.1.4",
